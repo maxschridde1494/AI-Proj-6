@@ -1,0 +1,3 @@
+In this project, you will implement the perceptron algorithm and stochastic gradient descent, which you will use to train neural network classifiers for handwritten digits.
+
+Optical character recognition (OCR) is the task of extracting text from image sources. The data set on which you will run your classifiers is a collection of handwritten numerical digits (0-9). This is a very commercially useful technology, similar to the technique used by the US post office to route mail by zip codes. There are systems that can perform with over 99% classification accuracy (see LeNet-5 for an example system in action).
