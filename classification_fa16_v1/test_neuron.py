@@ -40,8 +40,14 @@ raw_test_data, featurized_test_data, test_labels = get_neuron_test_data()
 
 """YOUR CODE HERE"""
 
-training_accuracy = None
-test_accuracy = None
+s = neuron.SigmoidNeuron(784)
+
+for _ in range(num_times_to_train):
+	s.train(featurized_training_data,alpha, training_labels)
+
+training_accuracy = (1 - dcu.zero_one_loss(s, featurized_training_data, training_labels))*100
+test_accuracy = (1 - dcu.zero_one_loss(s, featurized_test_data, test_labels)) * 100
+
 print('Final training accuracy: ' + str(training_accuracy) + '% correct')
 
 print("Test accuracy: " + str(test_accuracy) + '% correct')

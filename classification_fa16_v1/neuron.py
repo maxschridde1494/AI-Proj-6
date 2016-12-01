@@ -15,7 +15,7 @@ class SigmoidNeuron(object):
         self.numFeatures = numFeatures
 
         """YOUR CODE HERE"""
-        raiseNotDefined()
+        self.weights = np.zeros(self.numFeatures)
 
     def _sigmoid(self, z):
       """Function that maps dot product values to activation level. -infinity
@@ -49,7 +49,9 @@ class SigmoidNeuron(object):
            returns: True if activation is greater than 0.5."""
 
         """YOUR CODE HERE"""
-        raiseNotDefined()
+        if self._sigmoid(np.dot(self.weights, sample)) > .5:
+            return True
+        return False
     
     def train_single(self, sample, alpha, label):
         """Performs stochastic gradient descent on a single sample, i.e.
@@ -59,12 +61,17 @@ class SigmoidNeuron(object):
         of the loss function for this data point."""
         
         """YOUR CODE HERE"""
-        raiseNotDefined()
+        def helper(weights):
+            return self.loss(sample, label, weights)
+        gradient = nu.gradient(helper, self.weights)
+        for i in range(len(gradient)):
+            self.weights[i] -= alpha*gradient[i]
 
     def train(self, samples, alpha, labels):
         """Performs one iteration of stochastic gradient descent 
         by training over the entire set of samples (one sample at a time)."""
 
         """YOUR CODE HERE"""
-        raiseNotDefined()
+        for i in range(len(samples)):
+            self.train_single(samples[i], alpha, labels[i])
 
