@@ -38,9 +38,21 @@ raw_training_data, featurized_training_data, training_labels = get_perceptron_tr
 raw_test_data, featurized_test_data, test_labels = get_perceptron_test_data()
 
 """YOUR CODE HERE"""
+if bias:
+	featurized_training_data = dcu.apply_bias(raw_training_data)
+	featurized_test_data = dcu.apply_bias(raw_test_data)
+	p = perceptron.Perceptron(["0","1","2","3","4","5","6","7","8","9","10"], 785)
+else:
+	p = perceptron.Perceptron(["0","1","2","3","4","5","6","7","8","9"], 784)
 
-training_accuracy = None
-test_accuracy = None
+# for i in range(num_train_examples):
+for _ in range(num_times_to_train):
+	p.train(featurized_training_data[:num_train_examples],training_labels[:num_train_examples])
+
+training_accuracy = (1 - dcu.zero_one_loss(p, featurized_training_data, training_labels))*100
+test_accuracy = (1 - dcu.zero_one_loss(p, featurized_test_data, test_labels)) * 100
 print('Final training accuracy: ' + str(training_accuracy) + '% correct')
 
 print("Test accuracy: " + str(test_accuracy) + '% correct')
+
+dcu.display_digit_features(np.transpose(p.weightMatrix), bias)

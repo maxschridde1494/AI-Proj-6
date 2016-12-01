@@ -26,7 +26,7 @@ class Perceptron(object):
 
 
     def train(self, samples, labels):
-        """samples: np.array of shape (numFeatures, numSamples) (numSamples, numFeatures)
+        """samples: np.array of shape (numSamples, numFeatures)
            labels: list of numSamples strings, all of which must exist in self.categories 
            performs the weight updating process for perceptrons by iterating over each sample once."""
 

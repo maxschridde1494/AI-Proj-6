@@ -47,7 +47,9 @@ def zero_one_loss_ss(classifier, sample, label):
     Returns 0.0 if the classifier classifies the sample correctly, or 1.0 otherwise."""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    if classifier.classify(sample) == label:
+        return 0.0
+    return 1.0
 
 
 def zero_one_loss(classifier, samples, labels):
@@ -60,7 +62,12 @@ def zero_one_loss(classifier, samples, labels):
     65 out of 100 samples right, this function should return 0.35."""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    count = 0
+    for i in range(len(samples)):
+        count += zero_one_loss_ss(classifier, samples[i], labels[i])
+    print("count: " + str(count))
+    print("num samples: " + str(len(samples)))
+    return count/len(samples)
 
 
 
@@ -75,5 +82,11 @@ def convert_weight_vector_to_matrix(weight_vector, w, h, bias):
     weight vector. Ignore the bias if there is one"""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    matrix = []
+    for i in range(h):
+        interarr = []
+        for j in range(w):
+            interarr.append(weight_vector[i * h + j])
+        matrix.append(interarr)
+    return matrix
 
