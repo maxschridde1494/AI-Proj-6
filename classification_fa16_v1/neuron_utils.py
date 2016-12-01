@@ -3,9 +3,13 @@ from util import raiseNotDefined
 
 def gradient(f, w):
     """YOUR CODE HERE"""
-    raiseNotDefined()
-
-
+    cor = f(w)
+    ret = []
+    for i in range(len(w)):
+      o = list(w)
+      o[i] += .1
+      ret.append((f(o) - cor) / .1)
+    return ret
 
 
 def sanity_check_gradient():
@@ -36,3 +40,4 @@ def sanity_check_gradient():
           return math.log(1.0 + math.exp(-2*z))
       else:
           return math.log(1.0 + math.exp(2*z))
+sanity_check_gradient()
