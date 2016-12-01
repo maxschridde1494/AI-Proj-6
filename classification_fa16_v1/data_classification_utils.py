@@ -32,7 +32,11 @@ def simple_image_featurization(image):
         width of the image, and h is the height."""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    totalarr = []
+    for i in range(image.height):
+        for j in range(image.width):
+            totalarr.append(image.getPixel(j, i))
+    return np.array(totalarr)
 
 def zero_one_loss_ss(classifier, sample, label):
     """
